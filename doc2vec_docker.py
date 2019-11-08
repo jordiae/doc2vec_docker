@@ -1,9 +1,9 @@
-import gensim.models as g
+#import gensim.models as g
 import logging
 import argparse
 import os
 import codecs
-
+import sys
 
 def mkdir_p(path):
     try:
@@ -13,6 +13,7 @@ def mkdir_p(path):
 
 
 def main():
+    print(sys.argv)
     parser = argparse.ArgumentParser(description='Doc2vec driver.')
     parser.add_argument('mode', choices=['train', 'retrieve', 'infer'], help='Training, retrieve trained embeddings'
                                                                              'or inference mode')
@@ -36,8 +37,7 @@ def main():
         tokenized_path = args.tokenized_path
         texts = []
         for filename in os.listdir(tokenized_path):
-            codecs.open(texts, 'r', 'utf-8')
-            with codecs.open(os.path.join(tokenized_path, filename), 'r') as f:
+            with codecs.open(os.path.join(tokenized_path, filename), 'r', 'utf-8') as f:
                 texts.append([line.split() for line in f.readlines()])
 
 

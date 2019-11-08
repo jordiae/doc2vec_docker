@@ -1,4 +1,4 @@
-#import gensim.models as g
+import gensim.models as g
 import logging
 import argparse
 import os

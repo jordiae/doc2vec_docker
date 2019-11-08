@@ -38,7 +38,12 @@ def main():
         texts = []
         for filename in os.listdir(tokenized_path):
             with codecs.open(os.path.join(tokenized_path, filename), 'r', 'utf-8') as f:
-                texts.append([line.split() for line in f.readlines()])
+                doc_tokens = []
+                for line in f.readlines():
+                    if len(line) > 0:
+                        doc_tokens += line.split()
+                texts.append(doc_tokens)
+                #texts.append([line.split() for line in f.readlines()])
 
 
         #doc2vec parameters

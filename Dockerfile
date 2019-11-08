@@ -36,6 +36,8 @@ RUN python -c "import gensim.models as g"
 RUN git clone https://github.com/jordiae/doc2vec_docker.git
 
 
-VOLUME /resources
+#VOLUME /resources
 
-ENTRYPOINT ["python", "doc2vec_docker/doc2vec_docker.py"]
+
+# train
+ENTRYPOINT ["python", "doc2vec_docker/doc2vec_docker.py", "train", "model_prova", "/mount/output", "/mount/Scielo_wiki_FastText300.vec", "/mount/data/utf8_nofooter"]

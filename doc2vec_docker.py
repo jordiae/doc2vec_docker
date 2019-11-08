@@ -4,7 +4,7 @@ import argparse
 import os
 import codecs
 import sys
-import numpy
+import numpy as np
 
 def mkdir_p(path):
     try:

@@ -15,16 +15,18 @@ def mkdir_p(path):
 def main():
     parser = argparse.ArgumentParser(description='Doc2vec driver.')
     parser.add_argument('mode', choices=['train', 'retrieve', 'infer'], help='Training, retrieve trained embeddings'
-                                                                             'or inference mode', required=True)
-    parser.add_argument('name', type=str, help='Model name', required=True)
-    parser.add_argument('output_path', type=str, required=True,
-                        help='Output path')
+                                                                             'or inference mode')
+    parser.add_argument('name', type=str, help='Model name')
+    parser.add_argument('output_path', type=str, help='Output path')
     parser.add_argument('word_embeddings_path', type=str,
                         help='Pre-trained word embeddings path')
     parser.add_argument('tokenized_path', type=str,
                         help='Directory with tokenized plain text documents')
     args = parser.parse_args()
 
+
+    if None in [args.mode, args.name, args.output_path]:
+        exit('Arguments mode, name, output_path are required')
     if args.mode == 'train' and (args.word_embeddings_path is None or args.tokenized_path is None):
         exit('word_embeddings_path and tokenized_path arguments are required if mode is set to train')
     if args.mode == 'infer' and args.tokenized_path is None:

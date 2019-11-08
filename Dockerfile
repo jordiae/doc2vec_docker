@@ -43,4 +43,6 @@ RUN git clone https://github.com/jordiae/doc2vec_docker.git
 
 
 # train
-ENTRYPOINT ["python", "doc2vec_docker/doc2vec_docker.py", "train", "model_prova", "/mount/output", "/mount/Scielo_wiki_FastText300.vec", "/mount/data/utf8_nofooter"]
+#ENTRYPOINT ["python", "doc2vec_docker/doc2vec_docker.py", "train", "model_prova", "/mount/output", "/mount/Scielo_wiki_FastText300.vec", "/mount/data/utf8_nofooter"]
+# retrieve
+ENTRYPOINT ["python", "doc2vec_docker/doc2vec_docker.py", "retrieve", "model_prova", "/mount/output", "/mount/Scielo_wiki_FastText300.vec", "/mount/data/utf8_nofooter"]

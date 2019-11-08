@@ -4,6 +4,7 @@ import argparse
 import os
 import codecs
 import sys
+import numpy
 
 def mkdir_p(path):
     try:
@@ -68,8 +69,12 @@ def main():
     elif args.mode == 'retrieve':
         saved_path = os.path.join(args.output_path, 'models', args.name + '.bin')
         model = g.Doc2Vec.load(saved_path)
+        vectors = []
         for i in range(len(model.docvecs)):
-            print model.docvecs[i]
+            vectors.append(model.docvecs[i])
+        vectors = np.array(vectors)
+        np.save(os.path.join(args.output_path, args.name + '_vectors'), vectors)
+            # print model.docvecs[i]
     else: # infer
         # inference hyper - parameters
         start_alpha = 0.01

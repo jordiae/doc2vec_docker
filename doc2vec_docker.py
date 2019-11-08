@@ -76,8 +76,7 @@ def main():
         tokenized_path = args.tokenized_path
         texts = []
         for filename in os.listdir(tokenized_path):
-            codecs.open(texts, 'r', 'utf-8')
-            with codecs.open(os.path.join(tokenized_path, filename), 'r') as f:
+            with codecs.open(os.path.join(tokenized_path, filename), 'r', 'utf-8') as f:
                 texts.append([line.split() for line in f.readlines()])
         test_docs = texts
         # infer test vectors

@@ -14,6 +14,9 @@
 #RUN conda install scipy=0.10
 
 FROM continuumio/anaconda2
+RUN apt-get update \
+	&& apt-get install -y gcc \
+	&& rm -rf /var/lib/apt/lists/*
 RUN conda create -n env python=2.7
 RUN echo "source activate env" > ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH

@@ -13,7 +13,6 @@ def mkdir_p(path):
 
 
 def main():
-    print(sys.argv)
     parser = argparse.ArgumentParser(description='Doc2vec driver.')
     parser.add_argument('mode', choices=['train', 'retrieve', 'infer'], help='Training, retrieve trained embeddings'
                                                                              'or inference mode')

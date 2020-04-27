@@ -28,7 +28,7 @@ ENV CONDA_DEFAULT_ENV env
 
 RUN python -m pip install scipy==0.10
 RUN python -m pip install numpy==1.8
-
+RUN python -m pip install smart-open==1.10.0
 
 RUN apt-get install git
 RUN git clone --single-branch --branch develop https://github.com/jhlau/gensim.git
